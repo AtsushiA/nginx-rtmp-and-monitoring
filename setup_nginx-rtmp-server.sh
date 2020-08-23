@@ -5,6 +5,8 @@
 # Support: Amazon Linux 2
 # Original: https://github.com/losywee/rtmp-streaming-server-build-script/blob/master/build.sh
 
+# usage install : sudo bash ./setup_nginx-rtmp-server.sh
+
 # Make Swap
 # https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-memory-swap-file/
 dd if=/dev/zero of=/swapfile bs=128M count=32
@@ -86,11 +88,9 @@ http {
             index  index.html index.htm;
 
         #include /etc/nginx/conf.d/node.conf;
-
         }
 
         #error_page  404              /404.html;
-
         # redirect server error pages to the static page /50x.html
         #
         error_page   500 502 503 504  /50x.html;
