@@ -74,17 +74,21 @@ sed -i -e 's/#include \/etc\/nginx\/conf.d\/node.conf;/include \/etc\/nginx\/con
 mkdir -p /opt/nginx-rtmp-monitoring/
 cat << 'EOF' > /opt/nginx-rtmp-monitoring/update-nginx-rtmp-monitoring-settings.sh
 #!/usr/bin/env bash
-#if [ `curl -m 5 -qf http://169.254.169.254/latest/meta-data/instance-id 2>/dev/null | grep "i-" | wc -l` -gt 0 ]; then
+
+if [ `curl -m 5 -qf http://169.254.169.254/latest/meta-data/instance-id 2>/dev/null | grep "i-" | wc -l` -gt 0 ]; then
   instance_ip=`curl -L http://169.254.169.254/latest/meta-data/public-ipv4`
-#else
-#  instance_ip=`curl -L https://ip.next-season.net`
+else
+  instance_ip=`curl -L https://ip.next-season.net`
+fi
 
 sed -e "s/{SERVER_IP}/${instance_ip}/g" /opt/nginx-rtmp-monitoring/config.json > /etc/nginx/html/nginx-rtmp-monitoring/config.json
 cd /etc/nginx/html/nginx-rtmp-monitoring/ && forever start server.js
+service nginx restart
+echo "${instance_ip}" > /home/ec2-user/ip.txt
 EOF
 
 chmod +x /opt/nginx-rtmp-monitoring/update-nginx-rtmp-monitoring-settings.sh
-nginx-rtmp-monitoring/update-nginx-rtmp-monitoring-settings.sh
+bash /opt/nginx-rtmp-monitoring/update-nginx-rtmp-monitoring-settings.sh
 
 cat << EOF > /opt/nginx-rtmp-monitoring/crontab
 @reboot /opt/nginx-rtmp-monitoring/update-nginx-rtmp-monitoring-settings.sh
