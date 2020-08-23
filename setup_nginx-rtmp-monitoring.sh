@@ -15,7 +15,7 @@ SESSION_SECRET_KEY=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | h
 #https://gist.github.com/earthgecko/3089509
 
 
-curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash -
+curl -sL https://rpm.nodesource.com/setup_current.x | bash -
 yum install -y nodejs
 
 cd /etc/nginx/html/
