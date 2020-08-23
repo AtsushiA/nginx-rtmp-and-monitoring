@@ -8,7 +8,8 @@ Amazon Linux release 2 (Karoo)
 # Usage:
 
 ```
-sudo bash ./build.sh
+sudo bash ./setup_nginx-rtmp-server.sh
+sudo bash ./setup_nginx-rtmp-monitoring.sh
 ```
 
 ## RTMP distribution setting
@@ -21,3 +22,8 @@ UniqueName (non-overlapping)
 
 ## RTMP reception setting
 rtmp://{SERVER-NAME}/live/{StreamKey}
+
+# RTMP Monitoring
+http://{SERVER-NAME}:9991
+
+User / Password : Set "setup_nginx-rtmp-monitoring.sh"
