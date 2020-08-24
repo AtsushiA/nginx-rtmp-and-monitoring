@@ -1,9 +1,10 @@
-# rtmp-streaming-server build script for AWS Amazon Linux2
+# rtmp-streaming-server build script for AWS Amazon Linux2 & Cent OS base 8.2
 A rtmp streaming server build script for nginx/tengine/openResty.
 
 # System requirement:
 
-Amazon Linux release 2 (Karoo)
+- Amazon Linux release 2 (Karoo)
+- Cent OS base 8.2 on Azure
 
 # Usage:
 
