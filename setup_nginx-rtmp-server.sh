@@ -20,7 +20,7 @@ echo '/swapfile swap swap defaults 0 0' >>  /etc/fstab
 # update
 yum update -y
 yum upgrade -y
-yum -y install git gcc pcre-devel openssl-devel
+yum -y install git gcc pcre-devel openssl-devel make
 
 
 # make nginx user
@@ -31,7 +31,7 @@ mkdir -p /var/cache/nginx
 
 
 # make install Nginx
-mkdir /tmp/nginx-rtmp/works && cd /tmp/nginx-rtmp/works
+mkdir -p /tmp/nginx-rtmp/works && cd /tmp/nginx-rtmp/works
 wget https://nginx.org/download/nginx-1.18.0.tar.gz
 tar zxvf nginx-1.18.0.tar.gz
 cd nginx-1.18.0
