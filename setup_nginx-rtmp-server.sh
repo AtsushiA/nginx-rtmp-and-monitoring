@@ -31,7 +31,7 @@ mkdir -p /var/cache/nginx
 
 
 # make install Nginx
-mkdir ~/works && cd ~/works/
+mkdir /tmp/nginx-rtmp/works && cd /tmp/nginx-rtmp/works
 wget https://nginx.org/download/nginx-1.18.0.tar.gz
 tar zxvf nginx-1.18.0.tar.gz
 cd nginx-1.18.0
